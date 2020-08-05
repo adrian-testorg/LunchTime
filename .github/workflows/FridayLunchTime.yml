@@ -1,16 +1,17 @@
 name: LunchTime
 on:
-  workflow_dispatch:
+   pull_request:
+    types: [closed] 
+   workflow_dispatch:
     inputs:
       name:
         description: 'Person to greet'
-        required: true
+        required: true]
         default: 'Mona the Octocat'
       home:
         description: 'location'
         required: false
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -21,3 +22,4 @@ jobs:
        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
        IMAGE_URL: https://media.tenor.com/images/9da8bb145d928fb9e53772588622ca53/tenor.gif
        MEME_HEADER: <NAME> just merged his own PR! Shame!
+
