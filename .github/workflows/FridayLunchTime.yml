@@ -2,6 +2,7 @@ name: LunchTime
 on:
    pull_request:
     types: [closed] 
+   workflow_dispatch:
     
 env:
   SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_USER_OAUTH_ACCESS_TOKEN }}
@@ -20,5 +21,10 @@ jobs:
     - uses: GoldenspearLLC/slack-chat-postmessage@v3
       with:
        channel: '#lunchtime'
-       text: "GITHUB::${{ github.event_name }} -- https://github.com/example/repo#${{ github.head_ref }}"
+       text: "@here <NAME> just merged his own PR on https://github.com/Adrian-testorg/lunchtime#${{ github.head_ref }}"
+    
+    - uses: GoldenspearLLC/slack-chat-postmessage@v3
+      with:
+       channel: '#lunchtime'
+       text: '/polly "What pizza does everyone want" "Hawaiian"'
 
