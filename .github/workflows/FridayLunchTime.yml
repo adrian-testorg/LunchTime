@@ -13,4 +13,12 @@ jobs:
        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
        IMAGE_URL: https://media.tenor.com/images/9da8bb145d928fb9e53772588622ca53/tenor.gif
        MEME_HEADER: <NAME> just merged his own PR! Shame!
+       
+    - uses: archive/github-actions-slack@master
+      with:
+          slack-bot-user-oauth-access-token: ${{ secrets.SLACK_BOT_USER_OAUTH_ACCESS_TOKEN }}
+          slack-channel: lunchtime
+          slack-text: Hello! Event "${{ github.event_name }}" in "${{ github.repository }}" 🤓
+    - name: Result from "Send Message"
+      run: echo "The result was ${{ steps.notify.outputs.slack-result }}"
 
